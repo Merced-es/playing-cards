@@ -9,10 +9,10 @@ public class Shoe {
 
   public Shoe(int decks) {
     int deckSize = Suit.values().length * Rank.values().length;
-    cards = new Card[decks * decks];
+    cards = new Card[decks * deckSize];
     for (int i = 0; i < decks; i++) {
       Deck d = new Deck();
-      System.arraycopy(d.getCards(), 0, cards, i * deckSize, decks);
+      System.arraycopy(d.getCards(), 0, cards, i * deckSize, deckSize);
     }
   }
 
@@ -21,6 +21,12 @@ public class Shoe {
   }
 
   public void shuffle(Random rng) {
-    // TODO Implement shuffle.
+    for (int targetIndex = cards.length - 1; targetIndex > 0; targetIndex--) {
+      int sourceIndex = rng.nextInt(cards.length);
+      Card temp = cards[targetIndex];
+      cards[targetIndex] = cards[sourceIndex];
+      cards[sourceIndex] = temp;
+    }
   }
+
 }

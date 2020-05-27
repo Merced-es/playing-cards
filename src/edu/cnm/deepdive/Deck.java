@@ -9,7 +9,7 @@ public class Deck {
   public Deck() {
     Suit[] suits = Suit.values();
     Rank[] ranks = Rank.values();
-    Card[] deck = new Card[suits.length * ranks.length];
+    cards = new Card[suits.length * ranks.length];
     int index = 0;
     for (Suit suit : suits) {
       for (Rank rank : ranks) {
